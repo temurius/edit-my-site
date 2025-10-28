@@ -3,20 +3,44 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
-.glass {
-  @apply bg-white/60 dark:bg-slate-800/50 backdrop-blur-md shadow-xl border border-white/20 dark:border-slate-700/50 rounded-xl;
+body {
+  @apply bg-slate-100 text-slate-900 antialiased transition-colors duration-300 ease-out dark:bg-slate-900 dark:text-slate-100;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont;
 }
 
-.btn {
-  @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition focus:outline-none focus:ring-2 focus:ring-offset-2;
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-xl dark:bg-slate-800/60 dark:border-slate-700/60;
 }
+
 .btn-primary {
-  @apply btn bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
-}
-.btn-ghost {
-  @apply btn bg-transparent hover:bg-white/10;
+  @apply inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-indigo via-brand-emerald to-brand-indigo px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:shadow-inner-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-emerald;
 }
 
+.btn-ghost {
+  @apply inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-indigo;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #6366f1 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.code-diff pre {
+  @apply rounded-xl border border-slate-200/40 bg-slate-900/90 p-4 text-sm text-slate-100 shadow-inner-glow dark:border-slate-700 dark:bg-slate-950;
+}
+
+.toast-enter {
+  @apply translate-y-2 opacity-0;
+}
+
+.toast-enter-active {
+  @apply translate-y-0 opacity-100 transition-all duration-300;
+}
+
+.toast-leave-active {
+  @apply translate-y-2 opacity-0 transition-all duration-300;
+}

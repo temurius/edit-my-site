@@ -1,42 +1,37 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, delay } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-export interface DiffChunk {
-  file: string;
-  patch: string; // unified diff patch
+export interface AiEditRequest {
+  prompt: string;
+  htmlContext: string;
 }
 
-export interface DiffResult {
-  beforeHtml: string;
-  afterHtml: string;
-  diff: DiffChunk[];
-  summary: string;
+export interface AiEditResponse {
+  before: string;
+  after: string;
 }
 
-@Injectable()
+export interface PullRequestResponse {
+  status: 'ok' | 'error';
+  prUrl?: string;
+}
+
+@Injectable({ providedIn: 'root' })
 export class AiService {
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
-  // Mocked initial implementation
-  generateEdit(prompt: string, contextHtml: string): Observable<DiffResult> {
-    const mock: DiffResult = {
-      beforeHtml: contextHtml,
-      afterHtml: contextHtml.replace('</h1>', ' <span class="text-primary-600">(Edited)</span></h1>'),
-      diff: [
-        {
-          file: 'index.html',
-          patch: `--- a/index.html\n+++ b/index.html\n@@\n- <h1>Hello</h1>\n+ <h1>Hello <span class=\"text-primary-600\">(Edited)</span></h1>`
-        }
-      ],
-      summary: `Applied edit: ${prompt}`
-    };
-    return of(mock).pipe(delay(500));
+  /**
+   * Calls the mock AI backend to request an edit suggestion. Returns the HTML "before" and "after".
+   */
+  generateEdit(body: AiEditRequest): Observable<AiEditResponse> {
+    return this.http.post<AiEditResponse>('/api/edit', body);
   }
 
-  createPullRequest(diff: DiffResult): Observable<{ url: string; number: number }> {
-    // Wire to backend stub
-    return this.http.post<{ url: string; number: number }>(`/api/pull-request`, diff);
+  /**
+   * Requests a mock pull request to be created. Returns the resulting PR URL.
+   */
+  createPullRequest(body: AiEditRequest): Observable<PullRequestResponse> {
+    return this.http.post<PullRequestResponse>('/api/pull-request', body);
   }
 }
-

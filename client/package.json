@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "ng serve --open=false",
+    "start": "ng serve --open=false --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "echo 'No tests yet'"
@@ -34,9 +34,7 @@
     "gsap": "^3.12.5",
     "highlight.js": "^11.10.0",
     "ngx-highlightjs": "^10.0.0",
-    "@fortawesome/angular-fontawesome": "^0.14.1",
-    "@fortawesome/fontawesome-svg-core": "^6.6.0",
-    "@fortawesome/free-solid-svg-icons": "^6.6.0"
+    "lucide-angular": "^0.4.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.7",
