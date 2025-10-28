@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-title>Users</mat-card-title>
+  <mat-list>
+    <mat-list-item *ngFor="let u of users">
+      <div class="flex justify-between w-full items-center">
+        <div>
+          <div class="font-medium">{{ u.name }}</div>
+          <div class="text-xs opacity-70">{{ u.email }}</div>
+        </div>
+        <span class="text-xs uppercase">{{ u.role }}</span>
+      </div>
+    </mat-list-item>
+  </mat-list>
+  <div class="text-xs opacity-70 mt-2">User management is mocked for now.</div>
+</mat-card>
+

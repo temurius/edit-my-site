@@ -1,0 +1,17 @@
+<div class="p-4 max-w-md mx-auto">
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <form class="mt-2 grid gap-3" (ngSubmit)="submit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+      <button class="btn-primary" type="submit">Continue</button>
+    </form>
+  </mat-card>
+</div>
+

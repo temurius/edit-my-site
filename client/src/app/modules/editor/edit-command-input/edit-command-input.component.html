@@ -1,0 +1,9 @@
+<div class="flex gap-2 items-end">
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Edit command</mat-label>
+    <textarea matInput rows="2" [formControl]="control" placeholder="e.g. Increase font size and change to blue"></textarea>
+  </mat-form-field>
+  <button class="btn-primary" (click)="onSubmit()">Run</button>
+</div>
+<div class="text-xs opacity-70 mt-1">Voice: roadmap — placeholder for Web Speech API.</div>
+

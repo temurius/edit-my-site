@@ -1,0 +1,7 @@
+<mat-card *ngFor="let pr of prs" class="mb-2">
+  <mat-card-title>
+    <a [routerLink]="['/dashboard/pr', pr.id]" class="text-primary-600 hover:underline">#{{ pr.id }} - {{ pr.title }}</a>
+  </mat-card-title>
+  <mat-card-subtitle>by {{ pr.author }} • {{ pr.status }}</mat-card-subtitle>
+</mat-card>
+

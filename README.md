@@ -1,27 +1,40 @@
-# EditMyWebsite
+# Edit-My-Site AI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Monorepo with Angular 18 client and Express backend to visually edit site sections using AI and create pull requests (mocked).
 
-## Development server
+## Quick Start
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Copy `server/.env.example` to `server/.env` and set values (optional for mocks).
+2. Install deps at repo root:
+   - `npm install`
+3. Run both client and server:
+   - `npm run start`
 
-## Code scaffolding
+Client: http://localhost:4200
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Server: http://localhost:4000
 
-## Build
+## Structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- `client/` Angular 18 app
+  - Core services (Auth, AI, API interceptor)
+  - Shared UI (Material + Tailwind)
+  - Feature modules: Editor, Dashboard, Auth
+- `server/` Express TypeScript API
+  - `/api/edit` mock AI response
+  - `/api/pull-request` mock PR creation
 
-## Running unit tests
+## Notes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Tailwind configured with glassmorphism utility classes.
+- NgRx added for editor state, easy to extend.
+- Material used for inputs, lists, dialogs.
+- GSAP powers widget panel animation.
+- highlight.js via ngx-highlightjs for diff.
 
-## Running end-to-end tests
+## Next Steps
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Integrate real OpenAI Responses API in `server/src/services/aiService.ts`.
+- Add GitHub App integration in `server/src/services/githubService.ts`.
+- Wire approvals flow in Dashboard with real data.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
