@@ -14,6 +14,7 @@ import { SharedModule } from './shared/shared.module';
 import { ApiInterceptor } from './core/interceptors/api.interceptor';
 import { editorReducer } from './state/editor.reducer';
 import { EditorEffects } from './state/editor.effects';
+import { EditorModule } from './modules/editor/editor.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { EditorEffects } from './state/editor.effects';
     AppRoutingModule,
     CoreModule,
     SharedModule,
+    EditorModule,
     StoreModule.forRoot({ editor: editorReducer }, {}),
     EffectsModule.forRoot([EditorEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25 })

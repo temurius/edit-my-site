@@ -18,7 +18,11 @@ export class EditorWidgetComponent implements OnInit {
 
   constructor(private ai: AiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Auto-open and show a mock preview so users see something immediately
+    this.open = true;
+    this.runEdit();
+  }
 
   toggle() {
     this.open = !this.open;
@@ -36,4 +40,3 @@ export class EditorWidgetComponent implements OnInit {
     this.ai.generateEdit(prompt, this.selectedHtml).subscribe(res => (this.result = res));
   }
 }
-
